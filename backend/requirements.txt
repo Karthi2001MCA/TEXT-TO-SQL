@@ -1,0 +1,54 @@
+# ============================================
+# Enterprise AI Data Assistant - Dependencies
+# ============================================
+
+# --- Web Framework ---
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+python-multipart==0.0.20
+
+# --- Database ---
+sqlalchemy==2.0.36
+aiosqlite==0.20.0
+asyncpg==0.30.0
+# pymysql==1.1.1      # Uncomment for MySQL
+# pyodbc==5.2.0       # Uncomment for SQL Server
+
+
+# --- Data Processing ---
+pandas==2.2.3
+openpyxl==3.1.5
+xlrd==2.0.1
+
+# --- AI / LLM ---
+google-generativeai==0.8.4
+groq==0.15.0
+openai==1.59.7
+# ollama==0.4.6       # Uncomment for local Ollama
+
+# --- RAG / Vector Database ---
+faiss-cpu==1.9.0.post1
+sentence-transformers==3.3.1
+chromadb==0.5.23
+
+# --- SQL Processing ---
+sqlparse==0.5.3
+
+# --- Visualization ---
+plotly==5.24.1
+kaleido==0.2.1
+
+# --- Export ---
+reportlab==4.2.5
+xlsxwriter==3.2.0
+
+# --- Security & Rate Limiting ---
+slowapi==0.1.9
+
+# --- Configuration ---
+pydantic-settings==2.7.0
+python-dotenv==1.0.1
+
+# --- Utilities ---
+httpx==0.28.1
+aiofiles==24.1.0

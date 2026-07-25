@@ -1,0 +1,37 @@
+# ============================================
+# Secrets — never commit real API keys
+# ============================================
+.env
+*.env
+!.env.example
+
+# ============================================
+# Python
+# ============================================
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# ============================================
+# Local data (uploads, SQLite DBs, vector store)
+# ============================================
+backend/data/*.db
+backend/data/uploads/
+backend/data/vector_store/
+
+# ============================================
+# Node / frontend
+# ============================================
+node_modules/
+frontend/dist/
+
+# ============================================
+# Editor / OS
+# ============================================
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
