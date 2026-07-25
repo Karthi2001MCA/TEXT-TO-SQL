@@ -1,5 +1,5 @@
 /**
- * TypeScript interfaces for the Enterprise AI Data Assistant.
+ * TypeScript interfaces for TEXT-SQL-AI.
  */
 
 // ==========================================

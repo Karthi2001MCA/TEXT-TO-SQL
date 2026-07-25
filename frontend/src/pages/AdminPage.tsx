@@ -9,7 +9,6 @@ import {
   Database, MessageSquare, TrendingUp,
   CheckCircle2, XCircle,
 } from 'lucide-react';
-import { motion } from 'framer-motion';
 import toast from 'react-hot-toast';
 
 export default function AdminPage() {
@@ -54,24 +53,24 @@ export default function AdminPage() {
 
       {stats && (
         <div className="stat-grid">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }} className="card stat-card">
+          <div className="card stat-card">
             <div className="flex items-center justify-between">
               <div><div className="stat-value">{stats.total_datasets}</div><div className="stat-label">Total Datasets</div></div>
               <div className="stat-icon cyan"><Database size={22} /></div>
             </div>
-          </motion.div>
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="card stat-card">
+          </div>
+          <div className="card stat-card">
             <div className="flex items-center justify-between">
               <div><div className="stat-value">{stats.total_queries}</div><div className="stat-label">Total Queries</div></div>
               <div className="stat-icon green"><MessageSquare size={22} /></div>
             </div>
-          </motion.div>
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }} className="card stat-card">
+          </div>
+          <div className="card stat-card">
             <div className="flex items-center justify-between">
               <div><div className="stat-value">{stats.success_rate}%</div><div className="stat-label">Success Rate</div></div>
               <div className="stat-icon yellow"><TrendingUp size={22} /></div>
             </div>
-          </motion.div>
+          </div>
         </div>
       )}
 

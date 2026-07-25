@@ -6,7 +6,6 @@ import { useState, useEffect } from 'react';
 import { uploadAPI } from '../services/api';
 import { Dataset } from '../types';
 import { Trash2, Eye, FileSpreadsheet } from 'lucide-react';
-import { motion } from 'framer-motion';
 import toast from 'react-hot-toast';
 
 export default function DatasetsPage() {
@@ -81,12 +80,9 @@ export default function DatasetsPage() {
         </div>
       ) : (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: 20 }}>
-          {datasets.map((ds, i) => (
-            <motion.div
+          {datasets.map((ds) => (
+            <div
               key={ds.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.05 }}
               className="card"
             >
               <div className="flex items-center gap-3 mb-4">
@@ -114,7 +110,7 @@ export default function DatasetsPage() {
                   <Trash2 size={14} /> Delete
                 </button>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       )}
@@ -126,9 +122,7 @@ export default function DatasetsPage() {
           display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000,
           padding: 32,
         }} onClick={() => setPreview(null)}>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
+          <div
             className="card"
             style={{ maxWidth: 900, width: '100%', maxHeight: '80vh', overflow: 'auto' }}
             onClick={(e) => e.stopPropagation()}
@@ -160,7 +154,7 @@ export default function DatasetsPage() {
             <div style={{ padding: '12px 0', fontSize: 13, color: 'var(--text-tertiary)' }}>
               Showing {preview.data.rows.length} of {preview.data.total_rows} rows
             </div>
-          </motion.div>
+          </div>
         </div>
       )}
     </div>

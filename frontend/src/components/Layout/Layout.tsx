@@ -1,5 +1,5 @@
 /**
- * Layout Component — wraps all authenticated pages with sidebar and header.
+ * Layout Component — sidebar + centred page content.
  */
 
 import { Outlet } from 'react-router-dom';

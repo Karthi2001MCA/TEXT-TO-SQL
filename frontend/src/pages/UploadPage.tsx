@@ -7,7 +7,6 @@ import { useDropzone } from 'react-dropzone';
 import { uploadAPI } from '../services/api';
 import { Dataset } from '../types';
 import { Upload, FileSpreadsheet, Check, X, Loader2 } from 'lucide-react';
-import { motion } from 'framer-motion';
 import toast from 'react-hot-toast';
 
 export default function UploadPage() {
@@ -86,9 +85,7 @@ export default function UploadPage() {
 
       {/* Selected File */}
       {selectedFile && !uploading && !uploadedDataset && (
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
+        <div
           className="card mt-4"
         >
           <div className="flex items-center gap-4 mb-4">
@@ -124,7 +121,7 @@ export default function UploadPage() {
             <Upload size={16} />
             Upload & Create Table
           </button>
-        </motion.div>
+        </div>
       )}
 
       {/* Uploading */}
@@ -139,9 +136,7 @@ export default function UploadPage() {
 
       {/* Upload Success */}
       {uploadedDataset && (
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
+        <div
           className="card mt-4"
           style={{ borderColor: 'rgba(16, 185, 129, 0.3)' }}
         >
@@ -199,7 +194,7 @@ export default function UploadPage() {
               </table>
             </div>
           )}
-        </motion.div>
+        </div>
       )}
     </div>
   );

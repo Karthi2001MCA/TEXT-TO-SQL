@@ -7,7 +7,6 @@ import { useState } from 'react';
 import { queryAPI } from '../services/api';
 import { QueryResponse } from '../types';
 import { Send, Copy, CheckCircle2, AlertTriangle, Sparkles, Table, Code2, BarChart3, Download } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
 import toast from 'react-hot-toast';
 
 export default function QueryPage() {
@@ -52,14 +51,25 @@ export default function QueryPage() {
     return 'low';
   };
 
+  // Before the first query the name + prompt sit centred in the viewport;
+  // once there is something to show, they move to the top.
+  const isEmpty = !result && !loading && !error;
+
   return (
-    <div className="animate-fade-in">
-      <div className="page-header">
-        <h1 className="page-title">Ask Your Data</h1>
-        <p className="page-subtitle">
-          Ask questions in plain English — AI will generate SQL, execute it, and show results
-        </p>
-      </div>
+    <div className={`query-page ${isEmpty ? 'is-empty' : ''}`}>
+      {isEmpty ? (
+        <div className="hero">
+          <h1 className="hero-title">TEXT-SQL-AI</h1>
+          <p className="hero-subtitle">
+            Ask questions about your data in plain English — the AI writes the SQL,
+            checks it across multiple models, and runs the best one.
+          </p>
+        </div>
+      ) : (
+        <div className="query-heading">
+          <h1 className="query-heading-title">TEXT-SQL-AI</h1>
+        </div>
+      )}
 
       {/* Query Input */}
       <form onSubmit={handleSubmit} className="query-container">
@@ -68,11 +78,12 @@ export default function QueryPage() {
             id="query-input"
             type="text"
             className="query-input"
-            placeholder="e.g., Show me total sales by region for the last quarter..."
+            placeholder="Ask anything about your data..."
             value={question}
             onChange={(e) => setQuestion(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && handleSubmit()}
             disabled={loading}
+            autoFocus
           />
           <button
             id="query-submit"
@@ -84,36 +95,48 @@ export default function QueryPage() {
               <span className="loading-spinner" />
             ) : (
               <>
-                <Send size={16} />
-                Query
+                <Send size={17} />
+                Ask
               </>
             )}
           </button>
         </div>
       </form>
 
+      {/* Example prompts — only on the empty screen */}
+      {isEmpty && (
+        <div className="suggestions">
+          {[
+            'How many rows are there in total?',
+            'Show me total sales by region',
+            'What are the top 10 records by value?',
+          ].map(example => (
+            <button
+              key={example}
+              type="button"
+              className="suggestion-chip"
+              onClick={() => setQuestion(example)}
+            >
+              {example}
+            </button>
+          ))}
+        </div>
+      )}
+
       {/* Loading State */}
-      <AnimatePresence>
         {loading && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+          <div
             className="loading-overlay"
           >
             <div className="loading-spinner lg" />
             <div className="loading-text">
               Sending to multiple AI models in parallel...
             </div>
-          </motion.div>
+          </div>
         )}
-      </AnimatePresence>
-
       {/* Error State */}
       {error && !loading && (
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
+        <div
           className="card"
           style={{ borderColor: 'rgba(239, 68, 68, 0.3)' }}
         >
@@ -124,15 +147,12 @@ export default function QueryPage() {
               <div style={{ fontSize: 14, color: 'var(--text-secondary)', marginTop: 4 }}>{error}</div>
             </div>
           </div>
-        </motion.div>
+        </div>
       )}
 
       {/* Results */}
       {result && !loading && (
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
+        <div
         >
           {/* Confidence & Meta */}
           <div className="flex items-center gap-4 mb-6" style={{ flexWrap: 'wrap' }}>
@@ -275,23 +295,9 @@ export default function QueryPage() {
               )}
             </div>
           )}
-        </motion.div>
-      )}
-
-      {/* Empty State */}
-      {!result && !loading && !error && (
-        <div className="card">
-          <div className="empty-state">
-            <div className="empty-state-icon">🤖</div>
-            <div className="empty-state-title">Ready to Analyze</div>
-            <div className="empty-state-text">
-              Upload a dataset first, then ask questions in natural language.
-              The AI will generate SQL, validate it across multiple models,
-              and return the best result.
-            </div>
-          </div>
         </div>
       )}
+
     </div>
   );
 }

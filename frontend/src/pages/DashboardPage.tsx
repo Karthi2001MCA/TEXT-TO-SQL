@@ -10,8 +10,6 @@ import { Dataset, QueryHistoryItem, LLMProvider } from '../types';
 import {
   Database, MessageSquare, CheckCircle2, Cpu, Clock,
 } from 'lucide-react';
-import { motion } from 'framer-motion';
-
 export default function DashboardPage() {
   const navigate = useNavigate();
   const [datasets, setDatasets] = useState<Dataset[]>([]);
@@ -60,16 +58,13 @@ export default function DashboardPage() {
       <div className="page-header">
         <h1 className="page-title">Dashboard</h1>
         <p className="page-subtitle">
-          Welcome to the AI Data Assistant! Here's your overview.
+          Welcome to TEXT-SQL-AI! Here's your overview.
         </p>
       </div>
 
       {/* Stats Grid */}
       <div className="stat-grid">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.05 }}
+        <div
           className="card stat-card"
         >
           <div className="flex items-center justify-between">
@@ -79,12 +74,9 @@ export default function DashboardPage() {
             </div>
             <div className="stat-icon purple"><Database size={22} /></div>
           </div>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
+        <div
           className="card stat-card"
         >
           <div className="flex items-center justify-between">
@@ -94,12 +86,9 @@ export default function DashboardPage() {
             </div>
             <div className="stat-icon cyan"><MessageSquare size={22} /></div>
           </div>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.15 }}
+        <div
           className="card stat-card"
         >
           <div className="flex items-center justify-between">
@@ -111,12 +100,9 @@ export default function DashboardPage() {
             </div>
             <div className="stat-icon green"><CheckCircle2 size={22} /></div>
           </div>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
+        <div
           className="card stat-card"
         >
           <div className="flex items-center justify-between">
@@ -128,15 +114,12 @@ export default function DashboardPage() {
             </div>
             <div className="stat-icon pink"><Cpu size={22} /></div>
           </div>
-        </motion.div>
+        </div>
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
         {/* LLM Providers */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.25 }}
+        <div
           className="card"
         >
           <div className="card-header">
@@ -170,13 +153,10 @@ export default function DashboardPage() {
               </div>
             )}
           </div>
-        </motion.div>
+        </div>
 
         {/* Recent Queries */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
+        <div
           className="card"
         >
           <div className="card-header">
@@ -220,7 +200,7 @@ export default function DashboardPage() {
               </div>
             )}
           </div>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

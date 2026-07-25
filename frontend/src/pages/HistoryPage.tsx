@@ -6,7 +6,6 @@ import { useState, useEffect } from 'react';
 import { queryAPI } from '../services/api';
 import { QueryHistoryItem } from '../types';
 import { CheckCircle2, XCircle, Clock } from 'lucide-react';
-import { motion } from 'framer-motion';
 import toast from 'react-hot-toast';
 
 export default function HistoryPage() {
@@ -61,12 +60,9 @@ export default function HistoryPage() {
         </div>
       ) : (
         <div className="flex flex-col gap-3">
-          {history.map((item, i) => (
-            <motion.div
+          {history.map((item) => (
+            <div
               key={item.id}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: i * 0.03 }}
               className="card"
               style={{ padding: '16px 20px' }}
             >
@@ -107,7 +103,7 @@ export default function HistoryPage() {
                   </span>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       )}

@@ -31,7 +31,7 @@ export default function Sidebar() {
         <div className="sidebar-logo-icon">
           <Sparkles size={20} color="white" />
         </div>
-        <span className="sidebar-logo-text">AI Data Assistant</span>
+        <span className="sidebar-logo-text">TEXT-SQL-AI</span>
       </div>
 
       <nav className="sidebar-nav">
@@ -64,8 +64,8 @@ export default function Sidebar() {
         <div className="sidebar-user">
           <div className="sidebar-user-avatar">AI</div>
           <div className="sidebar-user-info">
-            <div className="sidebar-user-name">AI Data Assistant</div>
-            <div className="sidebar-user-role">Enterprise Edition</div>
+            <div className="sidebar-user-name">TEXT-SQL-AI</div>
+            <div className="sidebar-user-role">Multi-LLM Text-to-SQL</div>
           </div>
         </div>
       </div>

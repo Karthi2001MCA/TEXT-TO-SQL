@@ -9,7 +9,7 @@ export default function SettingsPage() {
     <div className="animate-fade-in">
       <div className="page-header">
         <h1 className="page-title">Settings</h1>
-        <p className="page-subtitle">Configure your AI Data Assistant preferences</p>
+        <p className="page-subtitle">Configure your TEXT-SQL-AI preferences</p>
       </div>
 
       <div className="card" style={{ maxWidth: 600 }}>
